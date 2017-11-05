@@ -1,4 +1,4 @@
-package com.zuora.ApiAutoFramework.utils;
+package com.zuora.api.utils;
 
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;

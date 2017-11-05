@@ -1,4 +1,4 @@
-package com.zuora.ApiAutoFramework.utils;
+package com.zuora.api.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

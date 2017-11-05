@@ -1,4 +1,4 @@
-package com.zuora.ApiAutoFramework;
+package com.zuora.api;
 
 /**
  * Hello world!

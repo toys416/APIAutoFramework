@@ -1,4 +1,4 @@
-package com.zuora.ApiAutoFramwork.listeners;
+package com.zuora.api.listeners;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-import com.zuora.ApiAutoFramework.utils.LogHelper;
+import com.zuora.api.utils.LogHelper;
 
 
 

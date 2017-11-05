@@ -1,4 +1,4 @@
-package com.zuora.ApiAutoFramework.testsuites;
+package com.zuora.api.testsuites;
 
 import java.lang.reflect.Method;
 
@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.zuora.ApiAutoFramework.utils.LogHelper;
+import com.zuora.api.utils.LogHelper;
 
 
 public class Accounts extends BaseTest{

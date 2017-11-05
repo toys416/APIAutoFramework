@@ -1,4 +1,4 @@
-package com.zuora.ApiAutoFramework.testsuites;
+package com.zuora.api.testsuites;
 
 import java.lang.reflect.Method;
 

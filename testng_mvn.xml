@@ -5,13 +5,13 @@
   <parameter name="TestRail_key" value="xE14O8DgYeTxtmRThzfk-FK8uVPFLC2x.Mwg6U/Jt" />
   <test name="Zuora API Test" preserve-order="true">
     <classes>
-      <class name="com.zuora.ApiAutoFramework.testsuites.Accounts"/>
+      <class name="com.zuora.api.testsuites.Accounts"/>
     </classes>
   </test>
   
   <listeners>
 	<listener class-name="org.uncommons.reportng.HTMLReporter" />
 	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-	<listener class-name="com.zuora.ApiAutoFramework.utils.ResultListener" />
+	<listener class-name="com.zuora.api.listeners.ResultListener" />
   </listeners>
 </suite>
