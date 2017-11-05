@@ -20,48 +20,43 @@ public class ResultListener extends TestListenerAdapter {
 		System.out.println();
 
 		LogHelper.debug("==");
-		//LogHelper.debug("==<TEST CASE START>:" + itr.getName());
-		LogHelper.debug("========================<TEST CASE PASSED>:" + itr.getName() + "============================");
+		LogHelper.debug("          ==============<TEST CASE START>:" + itr.getName() + "==================          ");
 		LogHelper.debug("==");
 
 	}
-
-	@Override
-	public void onTestFailure(ITestResult itr) {
-		super.onTestFailure(itr);
-		String testName = itr.getName();
-		try {
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		LogHelper.debug("========================<TEST CASE FAILED>:" + testName + "============================");
-	}
+	
 
 	@Override
 	public void onTestSkipped(ITestResult itr) {
 		super.onTestSkipped(itr);
-		String testName = itr.getName();
 		try {
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		LogHelper
-				.debug("========================<TEST CASE SKIPPED>:" + testName + "============================");
+		printTestResult(itr, "SKIPPED");
 	}
-
+	
 	@Override
 	public void onTestSuccess(ITestResult itr) {
 		super.onTestSuccess(itr);
-		String testName = itr.getName();
 		try {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		LogHelper
-				.debug("========================<TEST CASE PASSED>:" + testName + "============================");
+		printTestResult(itr, "PASSED");
+	}
+
+	@Override
+	public void onTestFailure(ITestResult itr) {
+		super.onTestFailure(itr);
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		printTestResult(itr, "FAILED");
 	}
 
 	@Override
@@ -78,6 +73,11 @@ public class ResultListener extends TestListenerAdapter {
 		int id = result.getTestClass().getName().hashCode();
 		id = id + result.getMethod().getMethodName().hashCode();
 		return id;
+	}
+	
+	public void printTestResult(ITestResult itr,String status) {
+		String testName = itr.getName();
+		LogHelper.debug("          ==============<TEST CASE "+status+">: "+ testName + "==================          ");
 	}
 
 	@Override
