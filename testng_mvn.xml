@@ -5,7 +5,7 @@
   <parameter name="TestRail_key" value="xE14O8DgYeTxtmRThzfk-FK8uVPFLC2x.Mwg6U/Jt" />
   <test name="Zuora API Test" preserve-order="true">
     <classes>
-      <class name="com.zuora.api.testsuites.Accounts"/>
+      <class name="com.zuora.api.testsuites.ApiTest"/>
     </classes>
   </test>
   
