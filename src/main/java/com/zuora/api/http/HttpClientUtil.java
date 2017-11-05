@@ -34,7 +34,6 @@ import org.apache.http.util.EntityUtils;
 public class HttpClientUtil {
 
 	private static Charset s = Consts.UTF_8;
-	// 请求实体
 	private static UrlEncodedFormEntity entitys = null;
 
 	/**
