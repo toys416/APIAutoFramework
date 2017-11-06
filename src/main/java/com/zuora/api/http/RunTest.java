@@ -16,28 +16,28 @@ public class RunTest {
 	static CloseableHttpResponse httpResponse = null;
 	private static final String TAG="RunTest";
 
-	public static ResponseBean runGet(CloseableHttpClient httpClient, String url, Hashtable<String, String> headerMap) {
-		try {
-			httpResponse = HttpClientUtil.doGet(url, headerMap, httpClient);
-			responseBean = ReponseUtil.setResponseBean(httpResponse);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return responseBean;
-	}
-
-	public static ResponseBean runPost(CloseableHttpClient httpClient, String url,
-			Hashtable<String, String> headerMap) {
-		try {
-			httpResponse = HttpClientUtil.doPost(url, headerMap, httpClient);
-			responseBean = ReponseUtil.setResponseBean(httpResponse);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return responseBean;
-	}
+//	public static ResponseBean runGet(CloseableHttpClient httpClient, String url, Hashtable<String, String> headerMap) {
+//		try {
+//			httpResponse = HttpClientUtil.doGet(url, headerMap, httpClient);
+//			responseBean = ReponseUtil.setResponseBean(httpResponse);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return responseBean;
+//	}
+//
+//	public static ResponseBean runPost(CloseableHttpClient httpClient, String url,
+//			Hashtable<String, String> headerMap) {
+//		try {
+//			httpResponse = HttpClientUtil.doPost(url, headerMap, httpClient);
+//			responseBean = ReponseUtil.setResponseBean(httpResponse);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return responseBean;
+//	}
 
 	public static ResponseBean runT(String how, CloseableHttpClient httpClient, String url,
 			Hashtable<String, String> headerMap) {
