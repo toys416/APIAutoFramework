@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="Zuora API Test"
-           tests="1"
+           tests="2"
            failures="0"
            errors="0"
            skipped="0"
-           time="1.592">
+           time="19.779">
   <properties />
   
   
-            <testcase name="get_Account" time="1.592" classname="com.zuora.api.testsuites.ApiTest" />
+            <testcase name="getAccountSummary" time="1.059" classname="com.zuora.api.testsuites.ApiTest" />
+                <testcase name="getAccount" time="18.720" classname="com.zuora.api.testsuites.ApiTest" />
       
 </testsuite>

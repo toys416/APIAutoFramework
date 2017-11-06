@@ -1,12 +1,11 @@
 package com.zuora.api.beans;
 
 
-/**
- * 响应response的bean文件
- * 
- * @author Charlie.Chen
- *
+/*
+ * Bean of a http response
  */
+
+
 public  class ResponseBean {
     
 	public String status;

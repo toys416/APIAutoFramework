@@ -28,18 +28,14 @@ import com.zuora.api.utils.LogHelper;
 
 
 public class HttpClientUtil {
-
-	private static Charset s = Consts.UTF_8;
-	private static UrlEncodedFormEntity entitys = null;
-	private static Hashtable headerMap = null;
-	private static final String TAG="HttpClientUtil";
+	//private static final String TAG="HttpClientUtil";
 
 	/**
 	 * doGet
 	 * @param url
 	 * @param headerMap
 	 * @param httpclient
-	 * @return
+	 * @return CloseableHttpResponse
 	 */
 	public static CloseableHttpResponse doGet(String url, Map<String, String> headerMap, CloseableHttpClient httpclient) {
 
@@ -66,9 +62,9 @@ public class HttpClientUtil {
  * @param url
  * @param headerMap
  * @param httpclient
- * @return
+ * @return CloseableHttpResponse
  */
-	public static CloseableHttpResponse doPost2(String url,  Map<String, String> headerMap,CloseableHttpClient httpclient) {
+	public static CloseableHttpResponse doPost(String url,  Map<String, String> headerMap,CloseableHttpClient httpclient) {
 
 		HttpPost httppost = new HttpPost(url);
 		for(String header : headerMap.keySet()){

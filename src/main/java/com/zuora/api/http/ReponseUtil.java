@@ -9,9 +9,8 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 
 /**
- * 将从服务端返回的response结果解析为ResponseBean对象
- * @author Charlie.chen
- * @date 2016-10-31
+ * Convert response result from server to ResponseBean
+ * @author wangjingzhou
  *
  */
 
@@ -21,12 +20,9 @@ public class ReponseUtil {
 	private static ResponseBean responseBean=null;
 
 	public static ResponseBean setResponseBean(CloseableHttpResponse httpResponse) {
-
-		// 使用响应对象获取响应实体
 		HttpEntity entity = httpResponse.getEntity();
 		if (entity != null)
 			try {
-				// 将响应实体转为字符串
 				String responseString = EntityUtils.toString(entity, "utf-8");
 				String rs = responseString.replace("\r\n", "");
 				
@@ -35,15 +31,26 @@ public class ReponseUtil {
 				responseBean.setStatusCode(Integer.toString(httpResponse.getStatusLine().getStatusCode()));
 				responseBean.setBody(rs);
 				
-				LogHelper.info(TAG,"\n" + "***************************Response Start**********************************" + "\n"
-						+ httpResponse.getStatusLine().getReasonPhrase() + "\n"
-						+ Integer.toString(httpResponse.getStatusLine().getStatusCode()) + "\n" + "Context" + rs + "\n"
-						+ "***************************Response End**********************************");
-
+				String printStatus="Status:"+"\n"
+									+responseBean.getStatus() + "\n"
+									+ responseBean.getStatusCode() + "\n";
+				
+				String printBody="Body:" +"\n"
+									+ rs + "\n";
+				
+				String printHeader="Header:" +"\n";
 				HeaderIterator iterator = httpResponse.headerIterator();
 				while (iterator.hasNext()) {
-					LogHelper.debug(TAG,"\t" + iterator.next());
+					printHeader +=iterator.next();
+					printHeader+="\n";
 				}
+					
+				LogHelper.info(TAG,"\n" + "***************************Print Response Start**********************************" + "\n"
+						+ printStatus+"\r\n"
+						+ printHeader+"\r\n"
+						+ printBody+"\r\n"
+						+ "***************************Print Response End**********************************");
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

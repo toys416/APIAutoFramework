@@ -27,39 +27,39 @@ import org.testng.annotations.Test;
 import com.zuora.api.beans.ResponseBean;
 import com.zuora.api.http.HttpClientUtil;
 import com.zuora.api.http.ReponseUtil;
+import com.zuora.api.http.RunTest;
 import com.zuora.api.utils.LogHelper;
 import com.zuora.api.utils.PropertiesUtil;
 
+public class ApiTest extends BaseTest {
 
-public class ApiTest {
-	
-	public static final String TAG="ApiTest";
-
-	static CookieStore cookieStore=null;
-
-	static CloseableHttpClient httpclient=null;
+	private static final String TAG = "ApiTest";
 
 	@Test
-	@Parameters({"apiAccessKeyId","apiSecretAccessKey","baseUrl"})
-	public void get_Account(String usr,String pwd,String baseUrl) {
+	public void getAccount() {
+
+		String url = baseUrl + "accounts/A00000045";
+		ResponseBean responseBean = RunTest.runT("GET",httpClient, url, headerMap);
+		//ResponseBean responseBean = RunTest.runGet(httpClient, url, headerMap);
+		// add Assert
+		Assert.assertEquals("OK", responseBean.getStatus());
+		Assert.assertEquals("200", responseBean.getStatusCode());
+
+	}
+
+	@Test
+	@Parameters({ "apiAccessKeyId", "apiSecretAccessKey", "baseUrl" })
+	public void getAccountSummary(String usr, String pwd, String baseUrl) {
 
 		try {
-//			String url = PropertiesUtil.getValue("url","config.properties");
-			//String url="https://app-0.stg.eu.zuora.com/apps/v1/accounts/A00000045";
-			
-			String url=baseUrl+ "accounts/A00000045";
-			
-			LogHelper.error(TAG, "url:"+url);
-			httpclient = HttpClients.createDefault();
-			
-			Map<String,String> headerMap=new HashMap<String, String>();
-//			paramsMap.put("apiAccessKeyId", "interviewee@zuora.com");
-//			paramsMap.put("apiSecretAccessKey", "Passw0rd");
-			
+			String url = baseUrl + "accounts/A00000045/summary";
+			httpClient = HttpClients.createDefault();
+
+			Map<String, String> headerMap = new HashMap<String, String>();
 			headerMap.put("apiAccessKeyId", usr);
-			headerMap.put("apiSecretAccessKey",pwd);
-			
-			CloseableHttpResponse httpResponse = HttpClientUtil.doGet2(url, headerMap, httpclient);
+			headerMap.put("apiSecretAccessKey", pwd);
+
+			CloseableHttpResponse httpResponse = HttpClientUtil.doGet(url, headerMap, httpClient);
 			ResponseBean responseBean = ReponseUtil.setResponseBean(httpResponse);
 
 			// add Assert
@@ -71,33 +71,4 @@ public class ApiTest {
 		}
 	}
 
-	@BeforeClass
-	public void beforeClass() {
-	}
-
-	@AfterClass
-	public void afterClass() {
-	}
-
-	@BeforeTest
-	public void beforeTest() {
-	}
-
-	@AfterTest
-	public void afterTest() {
-	}
-
-	@BeforeSuite
-	public void beforeSuite() {
-	}
-
-	@AfterSuite
-	public void closeClient() {
-//		try {
-//			// 关闭流并释放资源
-//			httpclient.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-	}
 }
