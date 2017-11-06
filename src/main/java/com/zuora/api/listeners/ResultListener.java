@@ -21,9 +21,9 @@ public class ResultListener extends TestListenerAdapter {
 		System.out.println();
 		System.out.println();
 
-		LogHelper.debug("==");
-		LogHelper.debug("          ==============<TEST CASE START>:" + itr.getName() + "==================          ");
-		LogHelper.debug("==");
+		LogHelper.info("==");
+		LogHelper.info("          ==============<TEST CASE START>:" + itr.getName() + "==================          ");
+		LogHelper.info("==");
 
 	}
 	
@@ -64,11 +64,11 @@ public class ResultListener extends TestListenerAdapter {
 	@Override
 	public void onStart(ITestContext testContext) {
 		super.onStart(testContext);
-		LogHelper.debug("*************************************************************************************");
-		LogHelper.debug("*                                                                                   *");
-		LogHelper.debug("                        TEST START:[" + testContext.getName() + "]");
-		LogHelper.debug("*                                                                                   *");
-		LogHelper.debug("**************************************************************************************");
+		LogHelper.info("*************************************************************************************");
+		LogHelper.info("*                                                                                   *");
+		LogHelper.info("                        TEST START:[" + testContext.getName() + "]");
+		LogHelper.info("*                                                                                   *");
+		LogHelper.info("**************************************************************************************");
 	}
 
 	private int getId(ITestResult result) {
@@ -79,17 +79,17 @@ public class ResultListener extends TestListenerAdapter {
 	
 	public void printTestResult(ITestResult itr,String status) {
 		String testName = itr.getName();
-		LogHelper.debug("          ==============<TEST CASE "+status+">: "+ testName + "==================          ");
+		LogHelper.info("          ==============<TEST CASE "+status+">: "+ testName + "==================          ");
 	}
 
 	@Override
 	public void onFinish(ITestContext testContext) {
 		super.onFinish(testContext);
-		LogHelper.debug("*************************************************************************************");
-		LogHelper.debug("*                                                                                   *");
-		LogHelper.debug("                        TEST END:[" + testContext.getName() + "]");
-		LogHelper.debug("*                                                                                   *");
-		LogHelper.debug("**************************************************************************************");
+		LogHelper.info("*************************************************************************************");
+		LogHelper.info("*                                                                                   *");
+		LogHelper.info("                        TEST END:[" + testContext.getName() + "]");
+		LogHelper.info("*                                                                                   *");
+		LogHelper.info("**************************************************************************************");
 
 		// Rerun failed test case will be marked as "Skip", so after test, we
 		// need delete dup SKIP cases
@@ -99,41 +99,41 @@ public class ResultListener extends TestListenerAdapter {
 		ArrayList<Integer> skipTestIds = new ArrayList<Integer>();
 
 		for (ITestResult passedTest : testContext.getPassedTests().getAllResults()) {
-			LogHelper.debug("PassedTests = " + passedTest.getName());
+			LogHelper.info("PassedTests = " + passedTest.getName());
 			passTestIds.add(getId(passedTest));
 		}
 		for (ITestResult failTest : testContext.getFailedTests().getAllResults()) {
-			LogHelper.debug("FailTest = " + failTest.getName());
+			LogHelper.info("FailTest = " + failTest.getName());
 			failTestIds.add(getId(failTest));
 		}
 
 		for (ITestResult skipTest : testContext.getSkippedTests().getAllResults()) {
-			LogHelper.debug("SkipTest = " + skipTest.getName());
+			LogHelper.info("SkipTest = " + skipTest.getName());
 			skipTestIds.add(getId(skipTest));
 		}
 
-		LogHelper.debug("fail:");
+		LogHelper.info("fail:");
 		for (int id : failTestIds) {
 			String mm = id + "";
-			LogHelper.debug(mm);
+			LogHelper.info(mm);
 		}
 
-		LogHelper.debug("pass:");
+		LogHelper.info("pass:");
 		for (int id : passTestIds) {
 			String mm = id + "**";
-			LogHelper.debug(mm);
+			LogHelper.info(mm);
 		}
 
-		LogHelper.debug("skip:");
+		LogHelper.info("skip:");
 		for (int id : skipTestIds) {
 			String mm = id + "";
-			LogHelper.debug(mm);
+			LogHelper.info(mm);
 		}
 
 		for (ITestResult skipTest : testContext.getSkippedTests().getAllResults()) {
 			int skipTestId = getId(skipTest);
 			if (failTestIds.contains(skipTestId) || passTestIds.contains(skipTestId)) {
-				LogHelper.debug("Dup testid:" + skipTestId);
+				LogHelper.info("Dup testid:" + skipTestId);
 				toBeRemove.add(skipTest);
 			}
 		}
@@ -143,7 +143,7 @@ public class ResultListener extends TestListenerAdapter {
 				.hasNext();) {
 			ITestResult testResult = iterator.next();
 			if (toBeRemove.contains(testResult)) {
-				LogHelper.debug("Remove repeat Skip Test: " + testResult.getName());
+				LogHelper.info("Remove repeat Skip Test: " + testResult.getName());
 				iterator.remove();
 			}
 		}

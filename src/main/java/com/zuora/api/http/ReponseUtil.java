@@ -17,7 +17,7 @@ import org.apache.http.util.EntityUtils;
 
 public class ReponseUtil {
 
-	//private static LogUtil log = new LogUtil(ReponseUtil.class);
+	private static final String TAG="ResponseUtil";
 	private static ResponseBean responseBean=null;
 
 	public static ResponseBean setResponseBean(CloseableHttpResponse httpResponse) {
@@ -35,14 +35,14 @@ public class ReponseUtil {
 				responseBean.setStatusCode(Integer.toString(httpResponse.getStatusLine().getStatusCode()));
 				responseBean.setBody(rs);
 				
-				LogHelper.info("\n" + "***************************返回开始**********************************" + "\n"
+				LogHelper.info(TAG,"\n" + "***************************Response Start**********************************" + "\n"
 						+ httpResponse.getStatusLine().getReasonPhrase() + "\n"
 						+ Integer.toString(httpResponse.getStatusLine().getStatusCode()) + "\n" + "Context" + rs + "\n"
-						+ "***************************返回结束**********************************");
+						+ "***************************Response End**********************************");
 
 				HeaderIterator iterator = httpResponse.headerIterator();
 				while (iterator.hasNext()) {
-					LogHelper.debug("\t" + iterator.next());
+					LogHelper.debug(TAG,"\t" + iterator.next());
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

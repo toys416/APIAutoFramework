@@ -17,7 +17,8 @@ public class General {
 
 	// Get system time
 	public static String getDatetime() {
-		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat date = new SimpleDateFormat("HH:mm:ss");
 		return date.format(new Date());
 	}	
 }

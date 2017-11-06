@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TestSuite">
-  <parameter name="TestRail_user" value="wangjingzhou@huami.com" />
-  <parameter name="TestRail_key" value="xE14O8DgYeTxtmRThzfk-FK8uVPFLC2x.Mwg6U/Jt" />
+  <parameter name="apiAccessKeyId" value="interviewee@zuora.com" />
+  <parameter name="apiSecretAccessKey" value="Passw0rd" />
+  <parameter name="baseUrl" value="https://app-0.stg.eu.zuora.com/apps/v1/" />
+  
   <test name="Zuora API Test" preserve-order="true">
     <classes>
       <class name="com.zuora.api.testsuites.ApiTest"/>

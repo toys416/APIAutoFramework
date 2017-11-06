@@ -10,7 +10,7 @@ package com.zuora.api.beans;
 public  class ResponseBean {
     
 	public String status;
-	public String statusCode;   //响应状态码
+	public String statusCode;   
 	public String contentType;
 	public String body;
 	
