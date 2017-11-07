@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.zuora.api.beans.DataProviderBean;
 import com.zuora.api.beans.ResponseBean;
 import com.zuora.api.http.RunTest;
 
@@ -22,20 +23,25 @@ public class ApiTest extends BaseTest {
 //	}
 	
 	@Test(dataProvider="account_valid",dataProviderClass=com.zuora.api.utils.DataProviders.class)
-	public void getAccount_valid(String account) {
-
-		String url = baseUrl + "accounts/"+account;
-		ResponseBean responseBean = RunTest.runT("GET",httpClient, url, headerMap);
+	public void getAccount_valid(DataProviderBean excelBean) {
+		String method=excelBean.getMethod();
+		String apiUrl=excelBean.getUrl();
+		String parameter=excelBean.getParam();
+		String status=excelBean.getStatus();
+		String statusCode=excelBean.getStatus();
+		
+		String url = baseUrl + apiUrl+ parameter;
+		ResponseBean responseBean = RunTest.runT(method,httpClient, url, headerMap);
 		// add Assert
-		Assert.assertEquals("OK", responseBean.getStatus());
-		Assert.assertEquals("200", responseBean.getStatusCode());
+		Assert.assertEquals(responseBean.getStatus(),status);
+		Assert.assertEquals(responseBean.getStatusCode(),statusCode);
 	}
 	
 	
 	@Test(dataProvider="account_invalid",dataProviderClass=com.zuora.api.utils.DataProviders.class)
-	public void getAccount_invalid(String account) {
+	public void getAccount_invalid(DataProviderBean bean) {
 
-		String url = baseUrl + "accounts/"+account;
+		String url = baseUrl + "accounts/"+bean.getParam();
 		ResponseBean responseBean = RunTest.runT("GET",httpClient, url, headerMap);
 		// add Assert
 		Assert.assertEquals("OK", responseBean.getStatus());

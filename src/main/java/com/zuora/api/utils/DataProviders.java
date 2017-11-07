@@ -1,25 +1,47 @@
 package com.zuora.api.utils;
 
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.testng.annotations.DataProvider;
+
+import com.zuora.api.beans.DataProviderBean;
 
 public class DataProviders {
 
+	// @DataProvider(name = "account_valid")
+	// public static Object[][] account_valid() {
+	// return new Object[][] {
+	// { "A00000045" },
+	// { "A00000046" },
+	// { "A00000047" }
+	// };
+	// }
+	//
+	//
+//	@DataProvider(name = "account_invalid")
+//	public static Object[][] account_invalie() {
+//		LogHelper.error("dattttttttttttta", "in dataprovider: [][]");
+//		return new Object[][] { { "A00000047" }, { "A00000047" }, { "A00000047" } };
+//	}
+
 	@DataProvider(name = "account_valid")
-	public static Object[][] account_valid() {
-		return new Object[][] { 
-			{ "A00000045" }, 
-			{ "A00000046" }, 
-			{ "A00000047" } 
-			};
+	public Iterator<DataProviderBean[]> account_valid() throws Exception {
+		 return ExcelUtil.getDataProvicerBeansFromExcel("Get Account", "account_valid");
+
 	}
 	
 	
 	@DataProvider(name = "account_invalid")
-	public static Object[][] account_invalie() {
-		return new Object[][] { 
-			{ "A00000045123" }, 
-			{ "A00000erererer" }, 
-			{ "@" } 
-			};
+	public Iterator<DataProviderBean[]> account_invalid() throws Exception {
+		 return ExcelUtil.getDataProvicerBeansFromExcel("Get Account", "account_invalid");
 	}
+
+
+
 }
