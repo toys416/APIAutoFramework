@@ -10,6 +10,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 
+import com.zuora.api.beans.ConfigBean;
 import com.zuora.api.beans.DataProviderBean;
 import com.zuora.api.utils.PropertiesUtil;
 
@@ -23,7 +24,8 @@ public class ExcelUtil {
 	public static Iterator<DataProviderBean[]> getDataProvicerBeansFromExcel(String apiName, String caseName)
 			throws Exception {
 
-		excelPath = PropertiesUtil.getValue("excelPath", "config.properties");
+		//excelPath = PropertiesUtil.getValue("excelPath", "config.properties");
+		excelPath= Config.getExcelPath();
 		HSSFWorkbook wb = new HSSFWorkbook(new FileInputStream(excelPath));
 		HSSFSheet sheet = wb.getSheet(apiName);
 

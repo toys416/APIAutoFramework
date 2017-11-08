@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestSuite">
-  <parameter name="apiAccessKeyId" value="interviewee@zuora.com" />
-  <parameter name="apiSecretAccessKey" value="Passw0rd" />
-  <parameter name="baseUrl" value="https://app-0.stg.eu.zuora.com/apps/v1/" />
-  
+<suite name="TestSuite" parallel="methods" thread-count="5">  
   <test name="Zuora API Test" preserve-order="true">
     <classes>
-      <class name="com.zuora.api.testsuites.ApiTest"/>
+      <class name="com.zuora.api.testsuites.Accounts"/>
     </classes>
   </test>
   
@@ -15,5 +11,6 @@
 	<listener class-name="org.uncommons.reportng.HTMLReporter" />
 	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 	<listener class-name="com.zuora.api.listeners.ResultListener" />
+	<listener class-name="com.zuora.api.listeners.RetryListener" />
   </listeners>
 </suite>

@@ -14,30 +14,21 @@ import com.zuora.api.beans.DataProviderBean;
 
 public class DataProviders {
 
-	// @DataProvider(name = "account_valid")
-	// public static Object[][] account_valid() {
-	// return new Object[][] {
-	// { "A00000045" },
-	// { "A00000046" },
-	// { "A00000047" }
-	// };
-	// }
-	//
-	//
+
 //	@DataProvider(name = "account_invalid")
 //	public static Object[][] account_invalie() {
-//		LogHelper.error("dattttttttttttta", "in dataprovider: [][]");
+//		LogHelper.error("test", "in dataprovider: [][]");
 //		return new Object[][] { { "A00000047" }, { "A00000047" }, { "A00000047" } };
 //	}
 
-	@DataProvider(name = "account_valid")
+	@DataProvider(name = "account_valid", parallel=false)
 	public Iterator<DataProviderBean[]> account_valid() throws Exception {
 		 return ExcelUtil.getDataProvicerBeansFromExcel("Get Account", "account_valid");
 
 	}
 	
 	
-	@DataProvider(name = "account_invalid")
+	@DataProvider(name = "account_invalid",parallel=false)
 	public Iterator<DataProviderBean[]> account_invalid() throws Exception {
 		 return ExcelUtil.getDataProvicerBeansFromExcel("Get Account", "account_invalid");
 	}

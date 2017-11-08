@@ -8,7 +8,7 @@ import com.zuora.api.beans.DataProviderBean;
 import com.zuora.api.beans.ResponseBean;
 import com.zuora.api.http.RunTest;
 
-public class ApiTest extends BaseTest {
+public class Accounts extends BaseTest {
 
 	private static final String TAG = "ApiTest";
 
@@ -22,8 +22,9 @@ public class ApiTest extends BaseTest {
 //		Assert.assertEquals("200", responseBean.getStatusCode());
 //	}
 	
+	
 	@Test(dataProvider="account_valid",dataProviderClass=com.zuora.api.utils.DataProviders.class)
-	public void getAccount_valid(DataProviderBean excelBean) {
+	public void getAccount_valid(DataProviderBean excelBean) throws InterruptedException {
 		String method=excelBean.getMethod();
 		String apiUrl=excelBean.getUrl();
 		String parameter=excelBean.getParam();
@@ -35,17 +36,19 @@ public class ApiTest extends BaseTest {
 		// add Assert
 		Assert.assertEquals(responseBean.getStatus(),status);
 		Assert.assertEquals(responseBean.getStatusCode(),statusCode);
+		
 	}
 	
 	
 	@Test(dataProvider="account_invalid",dataProviderClass=com.zuora.api.utils.DataProviders.class)
-	public void getAccount_invalid(DataProviderBean bean) {
-
+	//@Test
+	public void getAccount_invalid(DataProviderBean bean) throws InterruptedException {
 		String url = baseUrl + "accounts/"+bean.getParam();
 		ResponseBean responseBean = RunTest.runT("GET",httpClient, url, headerMap);
 		// add Assert
 		Assert.assertEquals("OK", responseBean.getStatus());
 		Assert.assertEquals("200", responseBean.getStatusCode());
+		
 	}
 	
 

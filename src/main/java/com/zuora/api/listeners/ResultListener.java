@@ -74,6 +74,7 @@ public class ResultListener extends TestListenerAdapter {
 	private int getId(ITestResult result) {
 		int id = result.getTestClass().getName().hashCode();
 		id = id + result.getMethod().getMethodName().hashCode();
+		//id = id + result.getParameters().hashCode();
 		return id;
 	}
 	
@@ -82,7 +83,11 @@ public class ResultListener extends TestListenerAdapter {
 		LogHelper.info("          ==============<TEST CASE "+status+">: "+ testName + "==================          ");
 	}
 
-	@Override
+//	@Override
+//	public void onFinish(ITestContext testContext) {
+//	}
+	
+//	@Override
 	public void onFinish(ITestContext testContext) {
 		super.onFinish(testContext);
 		LogHelper.info("*************************************************************************************");

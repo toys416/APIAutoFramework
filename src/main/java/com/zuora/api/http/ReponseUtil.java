@@ -10,8 +10,6 @@ import org.apache.http.util.EntityUtils;
 
 /**
  * Convert response result from server to ResponseBean
- * @author wangjingzhou
- *
  */
 
 public class ReponseUtil {

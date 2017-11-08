@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Zuora API Test"
+           tests="2"
+           failures="2"
+           errors="0"
+           skipped="0"
+           time="0.206">
+  <properties />
+            <testcase name="getAccount_invalid" time="0.000" classname="com.zuora.api.testsuites.Accounts">
+                <failure type="org.testng.TestNGException"
+                  message="
+Method public void com.zuora.api.testsuites.Accounts.getAccount_invalid(com.zuora.api.beans.DataProviderBean) throws java.lang.InterruptedException requires a @DataProvider named : account_invalid in class com.zuora.api.utils.DataProviders"
+              >
+<![CDATA[org.testng.TestNGException: 
+Method public void com.zuora.api.testsuites.Accounts.getAccount_invalid(com.zuora.api.beans.DataProviderBean) throws java.lang.InterruptedException requires a @DataProvider named : account_invalid in class com.zuora.api.utils.DataProviders
+  org.testng.internal.Parameters.findDataProvider(Parameters.java:336)
+  org.testng.internal.Parameters.handleParameters(Parameters.java:498)
+  org.testng.internal.Invoker.handleParameters(Invoker.java:1308)
+  org.testng.internal.Invoker.createParameters(Invoker.java:1036)
+  org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1126)
+  org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+  org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+  java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+  java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+  java.lang.Thread.run(Thread.java:745)
+]]>
+      </failure>
+
+          </testcase>
+            <testcase name="getAccount_valid" time="0.206" classname="com.zuora.api.testsuites.Accounts">
+                <failure type="java.lang.AssertionError"
+                  message="expected [OK] but found [Unauthorized]"
+              >
+<![CDATA[java.lang.AssertionError: expected [OK] but found [Unauthorized]
+  org.testng.Assert.fail(Assert.java:93)
+  org.testng.Assert.failNotEquals(Assert.java:512)
+  org.testng.Assert.assertEqualsImpl(Assert.java:134)
+  org.testng.Assert.assertEquals(Assert.java:115)
+  org.testng.Assert.assertEquals(Assert.java:189)
+  org.testng.Assert.assertEquals(Assert.java:199)
+  com.zuora.api.testsuites.Accounts.getAccount_valid(Accounts.java:36)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  java.lang.reflect.Method.invoke(Method.java:498)
+  org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+  org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+  org.testng.internal.Invoker.retryFailed(Invoker.java:1014)
+  org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1215)
+  org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+  org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+  java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+  java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+  java.lang.Thread.run(Thread.java:745)
+]]>
+      </failure>
+
+          </testcase>
+  
+  
+  
+</testsuite>
